@@ -23,11 +23,10 @@ $(document).ready(function () {
     canvas.height = $(window).height();
     canvas.width = $(window).width();
 
-    console.log((canvas.width / 100) * 20)
-    CarroPersonagem.xInit = (canvas.width / 100) * 47;
-    CarroPersonagem.yInit = (canvas.height / 100) * 70;
+    CarroPersonagem.xInit = (canvas.width / 100) * 46.5;
+    CarroPersonagem.yInit = (canvas.height / 100) * 80;
     CarroPersonagem.width = (canvas.width / 100) * 5;
-    CarroPersonagem.height = (canvas.height / 100) * 10;
+    CarroPersonagem.height = (canvas.height / 100) * 15;
 
 
     $(document).keydown(function (event) {
@@ -68,27 +67,27 @@ $(document).ready(function () {
 
         //primeiros 4 if servem para leitura de diagonais
         if (mapa[0] && mapa[1]) {
-            CarroPersonagem.mover(-(canvas.width / 100) * 1, -(canvas.height / 100) * 1, 0, 1);
+            CarroPersonagem.mover(-(canvas.width / 100) * 1.5, -(canvas.height / 100) * 1.5, 0, 1);
         } else if (mapa[0] && mapa[3]) {
-            CarroPersonagem.mover(-(canvas.width / 100) * 1, (canvas.height / 100) * 1, 0, 3);
+            CarroPersonagem.mover(-(canvas.width / 100) * 1.5, (canvas.height / 100) * 1.5, 0, 3);
         }
         else if (mapa[2] && mapa[1]) {
-            CarroPersonagem.mover((canvas.width / 100) * 1, -(canvas.height / 100) * 1, 2, 1);
+            CarroPersonagem.mover((canvas.width / 100) * 1.5, -(canvas.height / 100) * 1.5, 2, 1);
         }
         else if (mapa[2] && mapa[3]) {
-            CarroPersonagem.mover((canvas.width / 100) * 1, (canvas.height / 100) * 1, 2, 3);
+            CarroPersonagem.mover((canvas.width / 100) * 1.5, (canvas.height / 100) * 1.5, 2, 3);
         }
         //os ultimos 4 if servem para leitura de direções
         else if (mapa[0]) {
-            CarroPersonagem.mover(-(canvas.width / 100) * 2, 0, 0);
+            CarroPersonagem.mover(-(canvas.width / 100) * 1.5, 0, 0);
         } else if (mapa[1]) {
-            CarroPersonagem.mover(0, -(canvas.height / 100) * 2, 1);
+            CarroPersonagem.mover(0, -(canvas.height / 100) * 1.5, 1);
         }
         else if (mapa[2]) {
-            CarroPersonagem.mover((canvas.width / 100) * 2, 0, 2);
+            CarroPersonagem.mover((canvas.width / 100) * 1.5, 0, 2);
         }
         else if (mapa[3] && mapa[3]) {
-            CarroPersonagem.mover(0, (canvas.height / 100) * 2, 3);
+            CarroPersonagem.mover(0, (canvas.height / 100) * 1.5, 3);
         }
     }, 50)
 })
@@ -104,10 +103,10 @@ $(window).on('resize', function () {
     canvas.height = $(this).height();
     canvas.width = $(this).width();
 
-    CarroPersonagem.xInit = (canvas.width / 100) * 47;
-    CarroPersonagem.yInit = (canvas.height / 100) * 70;
+    
     CarroPersonagem.width = (canvas.width / 100) * 5;
-    CarroPersonagem.height = (canvas.height / 100) * 10;
+    CarroPersonagem.height = (canvas.height / 100) * 15;
+
 
     pintaCampo();
     CarroPersonagem.desenhar();
@@ -129,7 +128,7 @@ function pintaCampo() {
     //desenha a estrada
     contexto.beginPath();
     contexto.fillStyle = "#802b00";
-    inicioW = (canvas.width / 100) * 19;
+    inicioW = (canvas.width / 100) * 18.47;
     fimW = (canvas.width / 100) * 61;
     inicioH = (canvas.height / 100) * 0;
 
@@ -155,7 +154,7 @@ function movel(xInit, yInit, width, height, color) {
     }
 
     this.mover = (xNovo, yNovo, mapaPos1, mapaPos2) => {
-        //tratamento das bordas nas diagonais
+        //tratamento das bordas nas diagonais caso se mova numa borda extrema
         //diagonal esquerda-cima
         if ((((canvas.width / 100) * 20) < this.xInit && mapaPos1 == 0)
             && (canvas.height > (this.yInit + CarroPersonagem.height) && mapaPos2 == 3)) {
@@ -163,35 +162,34 @@ function movel(xInit, yInit, width, height, color) {
             this.yInit += yNovo;
         }
          //diagonal direita-baixo
-        else if ((((canvas.width / 100) * 73) > this.xInit && mapaPos1 == 2)
+        else if ((((canvas.width / 100) * 71) > this.xInit && mapaPos1 == 2)
             && (0 < this.yInit && mapaPos2 == 1)) {
 
             this.xInit += xNovo;
             this.yInit += yNovo;
         }
         //diagonal esquerda-baixo
-        else if ((((canvas.width / 100) * 20) < this.xInit && mapaPos1 == 0)
+        else if ((((canvas.width / 100) * 19) < this.xInit && mapaPos1 == 0)
             && (0 < this.yInit && mapaPos2 == 1)) {
 
             this.xInit += xNovo;
             this.yInit += yNovo;
         }
         //diagonal direita-cima
-        else if ((((canvas.width / 100) * 73) > this.xInit && mapaPos1 == 2)
+        else if ((((canvas.width / 100) * 71) > this.xInit && mapaPos1 == 2)
             && (canvas.height > (this.yInit + CarroPersonagem.height) && mapaPos2 == 3)) {
 
             this.xInit += xNovo;
             this.yInit += yNovo;
         }
-        //tratamento caso
         //tratamento das bordas nas linhas retas
         //esquerda
-        else if (((canvas.width / 100) * 20) < this.xInit && mapaPos1 == 0) {
+        else if (((canvas.width / 100) * 19) < this.xInit && mapaPos1 == 0) {
 
             this.xInit += xNovo;
         }
         //direita
-        else if (((canvas.width / 100) * 19) > this.xInit && mapaPos1 == 2){
+        else if (((canvas.width / 100) * 71) > this.xInit && mapaPos1 == 2){
 
             this.xInit += xNovo;
         }
