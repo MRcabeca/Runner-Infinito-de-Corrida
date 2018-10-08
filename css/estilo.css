@@ -3,7 +3,22 @@
     margin: 0px;
     padding: 0px
 }
-
+body{
+    background:darkslategray;
+}
 html, body {
+    margin-top: 0.25%;
+    display:flex;
     overflow: hidden;
+    justify-content: center;
+}
+
+@font-face {
+    font-family: 'GameOver';
+    src: url('font/game_over.woff') format('woff');
+}
+
+p{
+    font-family: GameOver;
+    font-size:0.25px;
 }
