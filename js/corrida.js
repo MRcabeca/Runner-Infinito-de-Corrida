@@ -11,6 +11,8 @@ var Imagens = new Array()
 var CarroPersonagem = new Player(0, 0, 0, 0);
 var pontos = 0;
 var maximo = 0;
+var Gramas = new Array();
+var Grama = new Image();
 
 $(document).ready(function () {
     //recebe o canvas e o contexto
@@ -32,6 +34,8 @@ $(document).ready(function () {
         Imagens.push(pedra)
     }
 
+
+
     var toco = new Image();
     toco.src = './img/Arvores/toco.png'
     Imagens.push(toco)
@@ -40,7 +44,7 @@ $(document).ready(function () {
     explosão.src = './img/Explosion.png'
     Imagens.push(explosão)
 
-
+    Grama.src = './img/grass.png'
 
     CarroPersonagem.xInit = (canvas.width / 100) * 47;
     CarroPersonagem.yInit = (canvas.height / 100) * 80;
@@ -93,121 +97,231 @@ $(document).ready(function () {
 
     var Game = setInterval(() => {
         pintaCampo();
-        var i = 1;
 
         pontos += 5;
         desenhaPlacar();
+
         for (var i = 0; i < inimigo.length; i++) {
             if (inimigo[i].yInit >= 1200) {
                 delete inimigo[i].yInit;
             }
-            inimigo[i].mover(0, 10, velocidade);
+            inimigo[i].mover(10, velocidade);
             inimigo[i].desenhar();
 
             if (CarroPersonagem.batida(inimigo[i]) == true) {
-                setInterval(() => {
-                
-                    if (i == 1) {
-                        contexto.drawImage(Imagens[9],
-                            0, 0, 90, 90,
-                            CarroPersonagem.xInit, CarroPersonagem.yInit, 100, 100);
-                    }else if( i < 13){
-                        contexto.drawImage(Imagens[9],
-                            96 * i, 96 * i, 96 * (i + 1), 96 * (i + 1),
-                            CarroPersonagem.xInit, CarroPersonagem.yInit, 100, 100);
-                    }
-                    i+=1; 
+                setTimeout(() => {
+                    contexto.drawImage(Imagens[9],
+                    0, 0, 90, 98,
+                    CarroPersonagem.xInit-65, CarroPersonagem.yInit-50, 190, 190);
+                    
+                },90)
 
-                }, 250)
+                setTimeout(() => {
+                    pintaCampo();
+                    desenhaPlacar();
+                    CarroPersonagem.desenhar();
 
-                var audio = new Audio('./sound/batida-8bits.wav')
-                audio.play();
-                clearInterval(Game);
+                    contexto.drawImage(Imagens[9],
+                    100, 0, 90, 98,
+                    CarroPersonagem.xInit-65, CarroPersonagem.yInit-50, 190, 190);
+                },180)
 
-                localStorage.setItem('maximo', pontos);
-                // setTimeout(() => {
-                //     contexto.fillStyle = "#ff9900";
-                //     contexto.strokeStyle = "black"
-                //     contexto.lineWidth = 5;
-                //     contexto.fillRect(90, 100, 590, 470);
-                //     contexto.strokeRect(90, 100, 590, 470);
+                setTimeout(() => {
+                    pintaCampo();
+                    desenhaPlacar();
+                    CarroPersonagem.desenhar();
+
+                    contexto.drawImage(Imagens[9],
+                    200, 0, 90, 98,
+                    CarroPersonagem.xInit-65, CarroPersonagem.yInit-50, 190, 190);
+                },270)
+
+                setTimeout(() => {
+                    pintaCampo();
+                    desenhaPlacar();
+                    CarroPersonagem.desenhar();
+
+                    contexto.drawImage(Imagens[9],
+                    300, 0, 90, 98,
+                    CarroPersonagem.xInit-65, CarroPersonagem.yInit-50, 190, 190);
+
+                },360)
+
+                setTimeout(() => {
+                    pintaCampo();
+                    desenhaPlacar();
+                    CarroPersonagem.desenhar();
+
+                    contexto.drawImage(Imagens[9],
+                    390, 0, 90, 98,
+                    CarroPersonagem.xInit-65, CarroPersonagem.yInit-50, 190, 190);
+
+                },450)
+
+                setTimeout(() => {
+                    pintaCampo();
+                    desenhaPlacar();
+
+                    contexto.drawImage(Imagens[9],
+                    480, 0, 90, 98,
+                    CarroPersonagem.xInit-85, CarroPersonagem.yInit-50, 190, 190);
+
+                },530)
+
+                setTimeout(() => {
+                    pintaCampo();
+                    desenhaPlacar();
+
+                    contexto.drawImage(Imagens[9],
+                    580, 0, 90, 98,
+                    CarroPersonagem.xInit-65, CarroPersonagem.yInit-50, 190, 190);
+
+                },620)
+
+                setTimeout(() => {
+                    pintaCampo();
+                    desenhaPlacar();
+
+                    contexto.drawImage(Imagens[9],
+                    666, 0, 104, 98,
+                    CarroPersonagem.xInit-65, CarroPersonagem.yInit-50, 190, 190);
+
+                },710)
+
+                setTimeout(() => {
+                    pintaCampo();
+                    desenhaPlacar();
+
+                    contexto.drawImage(Imagens[9],
+                    760, 0, 103, 98,
+                    CarroPersonagem.xInit-65, CarroPersonagem.yInit-50, 190, 190);
+
+                },800)
+
+                setTimeout(() => {
+                    pintaCampo();
+                    desenhaPlacar();
+
+                    contexto.drawImage(Imagens[9],
+                    855, 0, 103, 98,
+                    CarroPersonagem.xInit-65, CarroPersonagem.yInit-50, 190, 190);
+
+                },890)
+
+                setTimeout(() => {
+                    pintaCampo();
+                    desenhaPlacar();
+
+                    contexto.drawImage(Imagens[9],
+                    955, 0, 103, 98,
+                    CarroPersonagem.xInit-65, CarroPersonagem.yInit-50, 190, 190);
+
+                },980)
+
+                setTimeout(() => {
+                    pintaCampo();
+                    desenhaPlacar();
+
+                    contexto.drawImage(Imagens[9],
+                    1050, 0, 105, 98,
+                    CarroPersonagem.xInit-65, CarroPersonagem.yInit-50, 190, 190);
+
+                },1070)
+
+                setTimeout(() => {
+                    pintaCampo();
+
+                },1160)
+
+    var audio = new Audio('./sound/batida-8bits.wav')
+    audio.play();
+    clearInterval(Game);
+
+    localStorage.setItem('maximo', pontos);
+
+    setTimeout(() => {
+        contexto.fillStyle = "#ff9900";
+        contexto.strokeStyle = "black"
+        contexto.lineWidth = 5;
+        contexto.fillRect(90, 100, 590, 470);
+        contexto.strokeRect(90, 100, 590, 470);
 
 
-                //     contexto.font = "260px GameOver";
-                //     contexto.fillStyle = "red";
-                //     contexto.strokeStyle = "black"
-                //     contexto.textAlign = "center"
-                //     contexto.lineWidth = 3;
-                //     contexto.fillText("Game Over", (canvas.width / 2) - 20, canvas.height / 2 - 130);
-                //     contexto.strokeText("Game Over", (canvas.width / 2) - 20, canvas.height / 2 - 130);
+        contexto.font = "260px GameOver";
+        contexto.fillStyle = "red";
+        contexto.strokeStyle = "black"
+        contexto.textAlign = "center"
+        contexto.lineWidth = 3;
+        contexto.fillText("Game Over", (canvas.width / 2) - 20, canvas.height / 2 - 130);
+        contexto.strokeText("Game Over", (canvas.width / 2) - 20, canvas.height / 2 - 130);
 
-                //     contexto.save();
+        contexto.save();
 
-                //     contexto.fillStyle = "black";
-                //     contexto.font = "130px GameOver"
+        contexto.fillStyle = "black";
+        contexto.font = "130px GameOver"
 
-                //     contexto.fillText(pontosTexto.substring(0, (pontosTexto.length - pontos.toString().length)) + pontos,
-                //         (canvas.width / 2) - 20, canvas.height / 2);
+        contexto.fillText(pontosTexto.substring(0, (pontosTexto.length - pontos.toString().length)) + pontos,
+            (canvas.width / 2) - 20, canvas.height / 2);
 
-                //     contexto.restore();
-                //     contexto.lineWidth = 2.5;
-                //     contexto.font = "130px GameOver";
-                //     contexto.fillText("Pressione a Tecla",
-                //         (canvas.width / 2) - 20, canvas.height / 2 + 150);
-                //     contexto.strokeText("Pressione a Tecla",
-                //         (canvas.width / 2) - 20, canvas.height / 2 + 150);
+        contexto.restore();
+        contexto.lineWidth = 2.5;
+        contexto.font = "130px GameOver";
+        contexto.fillText("Pressione a Tecla",
+            (canvas.width / 2) - 20, canvas.height / 2 + 150);
+        contexto.strokeText("Pressione a Tecla",
+            (canvas.width / 2) - 20, canvas.height / 2 + 150);
 
-                //     contexto.fillText("R para Recomeçar",
-                //         (canvas.width / 2) - 20, canvas.height / 2 + 220);
-                //     contexto.strokeText("R para Recomeçar",
-                //         (canvas.width / 2) - 20, canvas.height / 2 + 220);
-                // }, 1000);
+        contexto.fillText("R para Recomeçar",
+            (canvas.width / 2) - 20, canvas.height / 2 + 220);
+        contexto.strokeText("R para Recomeçar",
+            (canvas.width / 2) - 20, canvas.height / 2 + 220);
+    }, 1500);
 
-                //se esse break não acontecer ele desenharia mas um ou mais obstaculos
-                break;
-            }
+    //se esse break não acontecer ele desenharia mas um ou mais obstaculos
+    break;
+}
         }
 
-        CarroPersonagem.desenhar();
+    CarroPersonagem.desenhar();
 
-        //primeiros 4 if servem para leitura de diagonais
-        if (mapa[0] && mapa[1]) {
-            CarroPersonagem.mover(-(canvas.width / 100) * 1.5, -(canvas.height / 100) * 1.5, 0, 1);
-        } else if (mapa[0] && mapa[3]) {
-            CarroPersonagem.mover(-(canvas.width / 100) * 1.5, (canvas.height / 100) * 1.5, 0, 3);
-        }
-        else if (mapa[2] && mapa[1]) {
-            CarroPersonagem.mover((canvas.width / 100) * 1.5, -(canvas.height / 100) * 1.5, 2, 1);
-        }
-        else if (mapa[2] && mapa[3]) {
-            CarroPersonagem.mover((canvas.width / 100) * 1.5, (canvas.height / 100) * 1.5, 2, 3);
-        }
-        //os ultimos 4 if servem para leitura de direções retas
-        else if (mapa[0]) {
-            CarroPersonagem.mover(-(canvas.width / 100) * 1.5, 0, 0);
-        } else if (mapa[1]) {
-            CarroPersonagem.mover(0, -(canvas.height / 100) * 1.5, 1);
-        }
-        else if (mapa[2]) {
-            CarroPersonagem.mover((canvas.width / 100) * 1.5, 0, 2);
-        }
-        else if (mapa[3] && mapa[3]) {
-            CarroPersonagem.mover(0, (canvas.height / 100) * 1.5, 3);
-        }
+//primeiros 4 if servem para leitura de diagonais
+if (mapa[0] && mapa[1]) {
+    CarroPersonagem.mover(-(canvas.width / 100) * 1.5, -(canvas.height / 100) * 1.5, 0, 1);
+} else if (mapa[0] && mapa[3]) {
+    CarroPersonagem.mover(-(canvas.width / 100) * 1.5, (canvas.height / 100) * 1.5, 0, 3);
+}
+else if (mapa[2] && mapa[1]) {
+    CarroPersonagem.mover((canvas.width / 100) * 1.5, -(canvas.height / 100) * 1.5, 2, 1);
+}
+else if (mapa[2] && mapa[3]) {
+    CarroPersonagem.mover((canvas.width / 100) * 1.5, (canvas.height / 100) * 1.5, 2, 3);
+}
+//os ultimos 4 if servem para leitura de direções retas
+else if (mapa[0]) {
+    CarroPersonagem.mover(-(canvas.width / 100) * 1.5, 0, 0);
+} else if (mapa[1]) {
+    CarroPersonagem.mover(0, -(canvas.height / 100) * 1.5, 1);
+}
+else if (mapa[2]) {
+    CarroPersonagem.mover((canvas.width / 100) * 1.5, 0, 2);
+}
+else if (mapa[3] && mapa[3]) {
+    CarroPersonagem.mover(0, (canvas.height / 100) * 1.5, 3);
+}
     }, 50)
 
-    var Intervalo = setInterval(() => {
-        if (velocidade != 15) {
-            velocidade += 0.25;
+var Intervalo = setInterval(() => {
+    if (velocidade != 15) {
+        velocidade += 0.25;
 
-        }
-        if (Spawn_Velo != 250) {
-            Spawn_Velo -= 50;
-        }
-        if (velocidade == 15 && Spawn_Velo == 250) {
-            clearInterval(Intervalo);
-        }
-    }, 1000)
+    }
+    if (Spawn_Velo != 250) {
+        Spawn_Velo -= 50;
+    }
+    if (velocidade == 15 && Spawn_Velo == 250) {
+        clearInterval(Intervalo);
+    }
+}, 1000)
 })
 
 
@@ -217,16 +331,25 @@ function pintaCampo() {
     var inicioW;
     var fimW;
 
-    //Pinta o fundo de verde
-    contexto.beginPath();
-    contexto.fillStyle = "green";
-    contexto.fillRect(0, 0, canvas.width, canvas.height);
+    for(var i = 0; i <13;i++){
+        //lado esquerdo
+        contexto.drawImage(Grama,0,50*i,50,50);
+        contexto.drawImage(Grama,50,50*i,50,50);
+        contexto.drawImage(Grama,100,50*i,50,50);
+
+        //lado direito
+        contexto.drawImage(Grama,(canvas.width/100)*81,50*i,50,50);
+        contexto.drawImage(Grama,(canvas.width/100)*87,50*i,50,50);
+        contexto.drawImage(Grama,(canvas.width/100)*93,50*i,50,50);
+        contexto.drawImage(Grama,(canvas.width/100)*98,50*i,50,50);
+    }
+        
 
     //desenha a estrada
     contexto.beginPath();
     contexto.fillStyle = "#802b00";
     inicioW = (canvas.width / 100) * 18;
-    fimW = (canvas.width / 100) * 62;
+    fimW = (canvas.width / 100) * 63.7;
     inicioH = (canvas.height / 100) * 0;
 
     contexto.fillRect(inicioW, 0, fimW, canvas.height);
@@ -275,7 +398,7 @@ function Player(xInit, yInit, width, height, Imagem) {
     this.mover = (xNovo, yNovo, mapaPos1, mapaPos2) => {
         //tratamento das bordas nas diagonais caso se mova numa borda extrema
         //diagonal esquerda-cima
-        if ((((canvas.width / 100) * 19.47) < this.xInit && mapaPos1 == 0)
+        if ((((canvas.width / 100) * 18) < this.xInit && mapaPos1 == 0)
             && (canvas.height > (this.yInit + CarroPersonagem.height) && mapaPos2 == 3)) {
             this.xInit += xNovo;
             this.yInit += yNovo;
@@ -288,7 +411,7 @@ function Player(xInit, yInit, width, height, Imagem) {
             this.yInit += yNovo;
         }
         //diagonal esquerda-baixo
-        else if ((((canvas.width / 100) * 19.47) < this.xInit && mapaPos1 == 0)
+        else if ((((canvas.width / 100) * 18) < this.xInit && mapaPos1 == 0)
             && (0 < this.yInit && mapaPos2 == 1)) {
 
             this.xInit += xNovo;
@@ -303,7 +426,7 @@ function Player(xInit, yInit, width, height, Imagem) {
         }
         //tratamento das bordas nas linhas retas
         //esquerda
-        else if (((canvas.width / 100) * 19.47) < this.xInit && mapaPos1 == 0) {
+        else if (((canvas.width / 100) * 18) < this.xInit && mapaPos1 == 0) {
 
             this.xInit += xNovo;
         }
@@ -325,6 +448,26 @@ function Player(xInit, yInit, width, height, Imagem) {
     }
 }
 
+function cenario(xInit, yInit, width, height, imagem, velocidade) {
+    this.xInit = xInit;
+    this.yInit = yInit;
+    this.width = width;
+    this.height = height;
+    this.imagem = imagem;
+    this.velo = velocidade;
+    this.desenhar = () => {
+        contexto.beginPath();
+
+        contexto.drawImage(this.imagem, this.xInit, this.yInit, this.width, this.height);
+    }
+
+    this.mover = (yNovo, velocidade) => {
+        this.yInit += yNovo + velocidade;
+    }
+
+
+}
+
 function obstaculo(xInit, yInit, width, height, Imagens, velocidade) {
     this.xInit = xInit;
     this.yInit = yInit;
@@ -338,8 +481,7 @@ function obstaculo(xInit, yInit, width, height, Imagens, velocidade) {
         contexto.drawImage(this.Imagens, this.xInit, this.yInit, this.width, this.height);
     }
 
-    this.mover = (xNovo, yNovo, velocidade) => {
-        this.xInit += xNovo;
+    this.mover = ( yNovo, velocidade) => {
         this.yInit += yNovo + velocidade;
     }
 
@@ -348,16 +490,17 @@ function obstaculo(xInit, yInit, width, height, Imagens, velocidade) {
 
 function Spawn(Imagens) {
 
-    spawn = Math.floor(Math.random() * (((canvas.width / 100) * 75) - ((canvas.width / 100) * 19.47)) +
-        ((canvas.width / 100) * 19.47));
+    spawn = Math.floor(Math.random() * (((canvas.width / 100) * 75) - ((canvas.width / 100) * 17.8)) +
+        ((canvas.width / 100) * 17.8));
 
 
-    inimigo.push(new obstaculo(spawn, -100, 30, 30,
+    inimigo.push(new obstaculo(spawn, -100, 40, 40,
         Imagens[Math.ceil(Math.random() * (Imagens.length - 2) - 1) + 1],
         velocidade));
 
     setTimeout(function () { Spawn(Imagens); }, Spawn_Velo);
 }
+
 
 function desenhaPlacar() {
 
