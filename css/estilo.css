@@ -4,13 +4,13 @@
     padding: 0px
 }
 body{
-    background:darkslategray;
-}
-html, body {
-    margin-top: 0.25%;
+    background: black;
+    margin : 0 auto;
     display:flex;
     overflow: hidden;
     justify-content: center;
+    margin-top : 10px;
+    
 }
 
 @font-face {
@@ -21,4 +21,65 @@ html, body {
 p{
     font-family: GameOver;
     font-size:0.25px;
+}
+
+
+aside{
+    height: 620px;
+    border :10px solid darkslategray;
+    margin: 0 auto;
+    margin-top : 0px;
+    width: 30%;
+    background:gray;
+}
+
+aside *{
+    text-align: center;
+}
+
+textarea{
+    resize:none;
+}
+
+#numeros{
+    border:2px solid black;
+    margin:10% 20%;
+    font-size:450%;
+}
+
+h1{
+    font-size: 450%;
+}
+
+aside ol{
+    border:2px solid black;
+    margin:5% 20%;
+    height:50%;
+    font-size:300%;
+}
+
+aside ol p{
+    font-size:100%;
+    border-bottom: 2px solid black;
+    background: black;
+    color:white
+}
+
+#ajuda{
+
+    margin:  10% 0 0 44%;
+    width:18%;
+    font-size:300%;
+    border-radius: 50%; 
+}
+
+#ajuda:hover{
+    background: darkgray;
+    color : black;
+    
+}
+
+#ajuda:active{
+    background: black;
+    color : white;
 }

@@ -2,26 +2,59 @@
 
 <html>
 
-    <head>
-        <title>Corrida-SMN</title>
-        <script src="js/jquery-3-3-1.js"></script>
-        <script src="js/corrida.js"></script>
-        <link rel="stylesheet" href="css/estilo.css">
-    </head>
+<head>
+    <title>Corrida-SMN</title>
+    <script src="js/jquery-3-3-1.js"></script>
+    <script src="js/corrida.js"></script>
+    <script src="js/pagina.js"></script>
 
-    <body>
-        
-        <div>
-            <canvas id="corrida-smn" width="800" height="640">
-                Seu navegador não suporta o recurso canvas ou ele está sendo bloqueado
-            </canvas>
-        </div>
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
 
-        <!--Por alguma razão só conseguir usar a font custom depois de inserir um elemento no HTML
-        que ultiliza ele-->
-        <p>.</p>
+<body>
 
-    </body>
+    <aside id="radio">
+
+        <h1>Rádio</h1>
+
+        <textarea id="musicas" rows="10" cols="20" readonly>
+
+        </textarea>
+
+    </aside>
+
+    <main>
+
+        <canvas id="corrida-smn" width="800" height="640">
+            Seu navegador não suporta o recurso canvas ou ele está sendo bloqueado
+        </canvas>
+
+    </main>
+
+    <aside id="placar">
+
+        <h1>Placar</h1>
+
+        <p id="numeros">00000</p>
+
+        <ol id="ranking">
+            <p>Top 5 Recordes</p>
+            <li>00000</li>
+            <li>00000</li>
+            <li>00000</li>
+            <li>00000</li>
+            <li>00000</li>
+        </ol>
+
+        <button id="ajuda">
+            ?
+        </button>
+
+    </aside>
+
+
+
+</body>
 
 
 </html>
