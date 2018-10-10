@@ -18,6 +18,7 @@ var Random = false;
 var Loop = false;
 var duraSeg = 0;
 var duraMin = 0;
+var focused = false;
 
 
 $(document).ready(function () {
@@ -27,6 +28,8 @@ $(document).ready(function () {
     for (const i in audio) {
         audio[i].onended = () => {
             RadioSucessao();
+
+            $("#painel h2").text($("#musica" + (MusicaAtual + 1)).text())
         }
 
         audio[i].addEventListener('loadedmetadata', function () {
@@ -45,7 +48,7 @@ $(document).ready(function () {
 
 
     //mudar com clique do mouse
-    $("#musicas li").click(function (e) {
+    $("#musicas li").click(function () {
         $("#musica" + (MusicaAtual + 1)).removeClass("musicaAtual")
 
 
@@ -53,7 +56,7 @@ $(document).ready(function () {
         audio[MusicaAtual].currentTime = 0;
         MusicaAtual = parseInt($(this).attr('id').substring(6, 7)) - 1
 
-        atualizaPainel(audioDuracao[MusicaAtual],'fim')
+        atualizaPainel(audioDuracao[MusicaAtual], 'fim')
         audio[MusicaAtual].play();
 
         $("#musica" + (MusicaAtual + 1)).addClass("musicaAtual")
@@ -61,13 +64,14 @@ $(document).ready(function () {
 
     })
 
-    setInterval(()=>{
-        atualizaPainel(audio[MusicaAtual].currentTime,'atual');
-            if($("#timer").focus() ==){ 
-                $("#timer").val(audio[MusicaAtual].currentTime);
-            }
-            $("#timer").attr('max',audioDuracao[MusicaAtual])
-    },1000)
+    //manter o timing
+    setInterval(() => {
+        atualizaPainel(audio[MusicaAtual].currentTime, 'atual');
+        if (focused == false) {
+            $("#timer").val(audio[MusicaAtual].currentTime);
+        }
+        $("#timer").attr('max', audioDuracao[MusicaAtual])
+    }, 1000)
 
 
     //pausar e continuar
@@ -131,12 +135,16 @@ $(document).ready(function () {
             RadioSucessao();
         }
 
+        $("#painel h2").text($("#musica" + (MusicaAtual + 1)).text())
+
     })
 
     //ir para a musica anterior
 
     $("#Anterior").click(function () {
         RadioAntecessao();
+
+        $("#painel h2").text($("#musica" + (MusicaAtual + 1)).text())
     })
 
     //slider de volume
@@ -165,12 +173,14 @@ $(document).ready(function () {
     })
 
     ////timer da musica
-    $("#timer").on('change', function () {
-            audio[MusicaAtual].currentTime = $("#timer").val() ;
-            $("#timer").trigger("blur")
+    $("#timer").on('input', function () {
+        focused = true;
+        $("#timer").trigger("blur")
+        audio[MusicaAtual].currentTime = $("#timer").val();
+        focused = false;
     })
 
-    
+
 
 
 
@@ -237,8 +247,8 @@ function RadioSucessao() {
         MusicaAtual += 1;
         audio[MusicaAtual].play();
     }
-    
-    atualizaPainel(audioDuracao[MusicaAtual],'fim')
+
+    atualizaPainel(audioDuracao[MusicaAtual], 'fim')
     $("#musica" + (MusicaAtual + 1)).addClass("musicaAtual")
 
 }
@@ -268,17 +278,17 @@ function RadioAntecessao() {
         MusicaAtual -= 1;
         audio[MusicaAtual].play();
     }
-    
-    atualizaPainel(audioDuracao[MusicaAtual],'fim')
+
+    atualizaPainel(audioDuracao[MusicaAtual], 'fim')
     $("#musica" + (MusicaAtual + 1)).addClass("musicaAtual")
 }
 
-function atualizaPainel(Numeros,id) {
+function atualizaPainel(Numeros, id) {
     var m = duracao('m', Numeros)
     var s = duracao('s', Numeros)
     var formatseg = "00"
     var seg = formatseg.substring(0, (2 - s.toString().length))
-    $("#"+id).text((m + ":" + seg + s));
+    $("#" + id).text((m + ":" + seg + s));
 }
 
 function duracao(tempo, numero) {

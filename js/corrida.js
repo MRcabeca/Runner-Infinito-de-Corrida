@@ -209,6 +209,7 @@ function Player(xInit, yInit, width, height, Imagem) {
     this.mover = (xNovo, yNovo, mapaPos1, mapaPos2) => {
         //tratamento das bordas nas diagonais caso se mova numa borda extrema
         //diagonal esquerda-cima
+        console.log(mapaPos1)
         if ((((canvas.width / 100) * 18) < this.xInit && mapaPos1 == 0)
             && (canvas.height > (this.yInit + CarroPersonagem.height) && mapaPos2 == 3)) {
             this.xInit += xNovo;
@@ -238,7 +239,6 @@ function Player(xInit, yInit, width, height, Imagem) {
         //tratamento das bordas nas linhas retas
         //esquerda
         else if (((canvas.width / 100) * 18) < this.xInit && mapaPos1 == 0) {
-
             this.xInit += xNovo;
         }
         //direita
@@ -259,25 +259,7 @@ function Player(xInit, yInit, width, height, Imagem) {
     }
 }
 
-function cenario(xInit, yInit, width, height, imagem, velocidade) {
-    this.xInit = xInit;
-    this.yInit = yInit;
-    this.width = width;
-    this.height = height;
-    this.imagem = imagem;
-    this.velo = velocidade;
-    this.desenhar = () => {
-        contexto.beginPath();
 
-        contexto.drawImage(this.imagem, this.xInit, this.yInit, this.width, this.height);
-    }
-
-    this.mover = (yNovo, velocidade) => {
-        this.yInit += yNovo + velocidade;
-    }
-
-
-}
 
 function obstaculo(xInit, yInit, width, height, Imagens, velocidade) {
     this.xInit = xInit;
@@ -540,7 +522,7 @@ function Jogar() {
         }
         //os ultimos 4 if servem para leitura de direções retas
         else if (mapa[0]) {
-            CarroPersonagem.mover(-(canvas.width / 100) * 1.5, 0);
+            CarroPersonagem.mover(-(canvas.width / 100) * 1.5, 0,0);
         } else if (mapa[1]) {
             CarroPersonagem.mover(0, -(canvas.height / 100) * 1.5, 1);
         }
@@ -615,11 +597,17 @@ function Pausar(tipo){
             contexto.font = "130px GameOver";
             contexto.lineWidth = 2.5;
 
-            contexto.fillText("A tecla R reinicia o jogo", (canvas.width / 2), canvas.height / 2 -50);
-            contexto.strokeText("A tecla R reinicia o jogo", (canvas.width / 2), canvas.height / 2 -50);
+            contexto.fillText("Use os direcionais", (canvas.width / 2), canvas.height / 2 -75);
+            contexto.strokeText("Use os direcionais", (canvas.width / 2), canvas.height / 2-75);
 
-            contexto.fillText("A tecla P pausa o jogo", (canvas.width / 2), canvas.height / 2 +25);
-            contexto.strokeText("A tecla P pausa o jogo", (canvas.width / 2), canvas.height / 2 +25);
+            contexto.fillText("Para mover o carro", (canvas.width / 2), canvas.height / 2 );
+            contexto.strokeText("Para mover o carro", (canvas.width / 2), canvas.height / 2);
+
+            contexto.fillText("A tecla R reinicia o jogo", (canvas.width / 2), canvas.height / 2 + 100);
+            contexto.strokeText("A tecla R reinicia o jogo", (canvas.width / 2), canvas.height / 2 +100);
+
+            contexto.fillText("A tecla P pausa o jogo", (canvas.width / 2), canvas.height / 2 +200);
+            contexto.strokeText("A tecla P pausa o jogo", (canvas.width / 2), canvas.height / 2 +200);
 
 
         }

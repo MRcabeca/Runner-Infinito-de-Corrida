@@ -1,7 +1,8 @@
 *{
     border:none;
     margin: 0px;
-    padding: 0px
+    padding: 0px;
+    user-select: none;
 }
 body{
     background: black;
