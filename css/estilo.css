@@ -9,7 +9,7 @@ body{
     display:flex;
     overflow: hidden;
     justify-content: center;
-    margin-top : 10px;
+    margin-top : 1%;
     
 }
 
@@ -66,11 +66,11 @@ aside ol p{
 }
 
 #ajuda{
-
     margin:  10% 0 0 44%;
     width:18%;
     font-size:300%;
-    border-radius: 50%; 
+    border-radius: 50%;
+    border: 3px  outset darkslategrey 
 }
 
 #ajuda:hover{
@@ -81,5 +81,84 @@ aside ol p{
 
 #ajuda:active{
     background: black;
-    color : white;
+    color : #ffffff;
+    border: 3px  inset darkslategrey
 }
+
+ 
+#musicas{
+    list-style-type:none;
+    justify-content: center;
+    display: grid;
+    margin:10% 0 0 9%;
+    border: 5px outset darkslategrey;
+    width:80%;
+}
+
+#musicas li{
+    text-align: justify;
+    user-select: none;
+    cursor: pointer;
+
+}
+
+#controles{
+    margin:20% 0 0 4%;
+    width:90%;
+    height: 33%;
+    border: 3px  solid darkslategrey;
+    outline : 3px  outset darkslategrey;
+}
+
+#controles button{
+    border: 3px  solid darkslategrey;
+    outline : 3px  outset darkslategrey;
+    margin:2.5%;
+    margin-top: 5%;
+    cursor: pointer;
+}
+
+#controles{
+    background: #999999
+}
+
+#controles button:active,.selecionado{
+    outline : 3px  inset darkslategrey !important;
+    background:darkgray;
+}
+
+#volume{
+    margin-top: 3%;
+}
+#volume input{
+    cursor: pointer;
+    margin-top:0px;
+}
+
+#volume p,#painel p{
+    display: inline-block;
+    font-size: 1em;
+    font-family: sans-serif;
+    
+}
+
+#volume h3{
+    margin-top:12%;
+}
+
+.musicaAtual{
+    color:red;
+}
+#painel{
+    border-top: 5px  outset darkslategrey;
+    border-bottom: 5px  outset darkslategrey;
+}
+#painel h2{
+    margin-bottom: 2%;
+}
+#painel input{
+    margin-bottom: 3%;
+    user-select: none;
+}
+
+

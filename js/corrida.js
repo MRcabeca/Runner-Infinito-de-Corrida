@@ -540,7 +540,7 @@ function Jogar() {
         }
         //os ultimos 4 if servem para leitura de direções retas
         else if (mapa[0]) {
-            CarroPersonagem.mover(-(canvas.width / 100) * 1.5, 0, 0);
+            CarroPersonagem.mover(-(canvas.width / 100) * 1.5, 0);
         } else if (mapa[1]) {
             CarroPersonagem.mover(0, -(canvas.height / 100) * 1.5, 1);
         }
@@ -565,7 +565,6 @@ function IntervaloTempo() {
         if (velocidade == 15 && Spawn_Velo == 250) {
             clearInterval(Intervalo);
         }
-        console.log(Spawn_Velo + " / " + velocidade)
     }, 1000)
 }
 
@@ -621,15 +620,6 @@ function Pausar(tipo){
 
             contexto.fillText("A tecla P pausa o jogo", (canvas.width / 2), canvas.height / 2 +25);
             contexto.strokeText("A tecla P pausa o jogo", (canvas.width / 2), canvas.height / 2 +25);
-
-            contexto.fillText("A tecla M para musica", (canvas.width / 2), canvas.height / 2 +100);
-            contexto.strokeText("A tecla M para musica", (canvas.width / 2), canvas.height / 2 +100);
-
-            contexto.fillText("A tecla S para os sons", (canvas.width / 2), canvas.height / 2 +175);
-            contexto.strokeText("A tecla S para os sons", (canvas.width / 2), canvas.height / 2 +175);
-
-
-
 
 
         }

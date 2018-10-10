@@ -13,13 +13,71 @@
 
 <body>
 
+
+
     <aside id="radio">
 
         <h1>Rádio</h1>
 
-        <textarea id="musicas" rows="10" cols="20" readonly>
+        <div id="painel">
+            <legend for ="painel">
+                <h2>
+                    deja vu
+                </h2>
+            </legend>
 
-        </textarea>
+            <input type="range" id="timer" value ="0">
+            <p id="atual">0:00</p>
+            <p>/</p>
+            <p id="fim">4:43</p>
+        </div>
+        <div id="controles">
+            <!--Botões retirado do Material Design-->
+            <button id="Play">
+                <img src="img/Radio/baseline-pause-24px.svg">
+            </button>
+
+            <button id="Anterior">
+                <img src="img/Radio/baseline-skip_previous-24px.svg">
+            </button>
+
+            <button id="Proxima">
+                <img src="img/Radio/baseline-skip_next-24px.svg">
+            </button>
+
+            <br>
+
+            <button id="Aleatoria">
+                <img src="img/Radio/baseline-shuffle-24px.svg">
+            </button>
+
+            <button id="Repetir">
+                <img src="img/Radio/baseline-replay-24px.svg">
+            </button>
+
+            <button id="Som">
+                <img src="img/Radio/baseline-volume_up-24px.svg">
+            </button>
+
+            <div id="volume">
+                <h3>Volume</h3><br>
+                <p>0</p>
+                <input id="slide" type="range" step="5" value="100">
+                <p>100</p>
+            </div>
+
+        </div>
+        <ul id="musicas">
+            <li id="musica1" class="musicaAtual">Deja Vu</li>
+            <li id="musica2">Don't stop the music</li>
+            <li id="musica3">Get me power</li>
+            <li id="musica4">Let's go,come on</li>
+            <li id="musica5">Night fever</li>
+            <li id="musica6">Night of fire</li>
+            <li id="musica7">Rock me to the top</li>
+            <li id="musica8">Saturday night fever</li>
+            <li id="musica9">Speed car</li>
+        </ul>
 
     </aside>
 
